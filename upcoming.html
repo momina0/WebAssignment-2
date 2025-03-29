@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Manager - Upcoming Books</title>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Book Manager</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reviews.html">Reviews</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="upcoming.html">Upcoming Books</a>
+                        </li>
+                        <li class="nav-item user-nav-item" style="display: none;">
+                            <a class="nav-link" href="profile.html">My Books</a>
+                        </li>
+                        <li class="nav-item logged-out">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                        </li>
+                        <li class="nav-item logged-out">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a>
+                        </li>
+                        <li class="nav-item logged-in" style="display: none;">
+                            <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                        </li>
+                        <li class="nav-item logged-in" style="display: none;">
+                            <a class="nav-link" href="profile.html" id="profileBtn">
+                                <i class="bi bi-person-circle"></i> <span id="userDisplayName">Profile</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Upcoming Books Section -->
+        <section id="upcoming" class="py-5 fade-in">
+            <div class="container">
+                <h2 class="text-center mb-5">Upcoming Releases</h2>
+                <div class="row mb-4">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="upcomingSearchInput" placeholder="Search upcoming books...">
+                            <button class="btn btn-primary" type="button" id="upcomingSearchBtn">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Filter by Release Date</h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button class="btn btn-outline-primary date-filter active" data-filter="all">All Releases</button>
+                                    <button class="btn btn-outline-primary date-filter" data-filter="next-month">Next Month</button>
+                                    <button class="btn btn-outline-primary date-filter" data-filter="next-quarter">Next 3 Months</button>
+                                    <button class="btn btn-outline-primary date-filter" data-filter="next-year">This Year</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="upcomingBooks" class="row">
+                    <!-- Upcoming books will be loaded dynamically -->
+                    <div class="col-12 text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <button id="notifyMeBtn" class="btn btn-primary">Get Release Notifications</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Book Manager. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-light me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <div id="loginError" class="text-danger mt-2" style="display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <label for="signupName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="signupName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="signupEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <div id="signupError" class="text-danger mt-2" style="display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Modal -->
+    <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notificationModalLabel">Get Release Notifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Select the upcoming books you'd like to be notified about when they're released:</p>
+                    <form id="notificationForm">
+                        <div id="notificationBooksList" class="mb-3">
+                            <!-- Books will be loaded dynamically -->
+                            <div class="text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="notificationEmail" class="form-label">Email for notifications</label>
+                            <input type="email" class="form-control" id="notificationEmail" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Box -->
+    <div id="chatBox" class="chat-box">
+        <div class="chat-header">
+            <h6>Chat with us</h6>
+            <button id="closeChatBox" class="btn-close"></button>
+        </div>
+        <div id="chatMessages" class="chat-messages"></div>
+        <form id="chatForm">
+            <input type="text" id="chatInput" placeholder="Type your message..." required>
+            <button type="submit" class="btn btn-primary btn-sm">Send</button>
+        </form>
+    </div>
+
+    <button id="openChatBox" class="btn chat-button">
+        <i class="bi bi-chat-dots-fill text-white"></i>
+    </button>
+
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("Upcoming books page loaded");
+  
+  // Direct implementation for the upcoming books page - completely self-contained
+  function displayRating(rating) {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5;
+    let stars = "";
+
+    for (let i = 0; i < fullStars; i++) {
+      stars += '<i class="bi bi-star-fill"></i> ';
+    }
+
+    if (halfStar) {
+      stars += '<i class="bi bi-star-half"></i> ';
+    }
+
+    const emptyStars = 5 - Math.ceil(rating);
+    for (let i = 0; i < emptyStars; i++) {
+      stars += '<i class="bi bi-star"></i> ';
+    }
+
+    return stars;
+  }
+
+  function loadUpcomingBooksDirectly() {
+    console.log("Loading upcoming books directly");
+    $.ajax({
+      url: "books.json",
+      dataType: "json",
+      success: function(data) {
+        if (data && data.upcoming) {
+          console.log("Upcoming books loaded successfully:", data.upcoming.length);
+          
+          const books = data.upcoming;
+          $("#upcomingBooks").empty();
+
+          // Display upcoming books
+          books.forEach((book) => {
+            const releaseDate = new Date(book.releaseDate);
+            const formattedDate = releaseDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            });
+
+            const bookCard = `
+              <div class="col-md-4 mb-4 book-card" data-category="${book.category}" data-id="${book.id}" data-release-date="${book.releaseDate}">
+                <div class="card h-100">
+                  <div class="position-relative">
+                    <img src="${book.cover}" class="card-img-top" alt="${book.title}">
+                    <span class="release-date-badge">Coming ${formattedDate}</span>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">${book.title}</h5>
+                    <p class="card-text">By ${book.author}</p>
+                    <p class="card-text">${book.description.substring(0, 100)}...</p>
+                    <button class="btn btn-primary mt-3 view-upcoming-details" data-book-id="${book.id}">View Details</button>
+                  </div>
+                </div>
+              </div>
+            `;
+            $("#upcomingBooks").append(bookCard);
+          });
+
+          // Initialize upcoming book detail handlers
+          $(".view-upcoming-details").click(function() {
+            const bookId = $(this).data("book-id");
+            alert("Book details will be shown for ID: " + bookId + ". This is a simplified version for the direct loading script.");
+          });
+
+          // Initialize notification modal
+          $("#notificationBooksList").empty();
+          books.forEach((book) => {
+            const releaseDate = new Date(book.releaseDate);
+            const formattedDate = releaseDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            });
+
+            const bookItem = `
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" value="${book.id}" id="notify-${book.id}">
+                <label class="form-check-label" for="notify-${book.id}">
+                  "${book.title}" by ${book.author} (${formattedDate})
+                </label>
+              </div>
+            `;
+
+            $("#notificationBooksList").append(bookItem);
+          });
+
+          // Initialize date filters
+          $(".date-filter").click(function() {
+            const filter = $(this).data("filter");
+
+            // Update active button
+            $(".date-filter").removeClass("active");
+            $(this).addClass("active");
+
+            // Filter books by release date
+            if (filter === "all") {
+              $(".book-card").fadeIn();
+            } else {
+              const now = new Date();
+              const oneMonth = new Date(now);
+              oneMonth.setMonth(now.getMonth() + 1);
+
+              const threeMonths = new Date(now);
+              threeMonths.setMonth(now.getMonth() + 3);
+
+              const endOfYear = new Date(now.getFullYear(), 11, 31);
+
+              $(".book-card").each(function() {
+                const releaseDate = new Date($(this).data("release-date"));
+
+                if (filter === "next-month" && releaseDate <= oneMonth) {
+                  $(this).fadeIn();
+                } else if (filter === "next-quarter" && releaseDate <= threeMonths) {
+                  $(this).fadeIn();
+                } else if (filter === "next-year" && releaseDate <= endOfYear) {
+                  $(this).fadeIn();
+                } else if (filter !== "next-month" && filter !== "next-quarter" && filter !== "next-year") {
+                  $(this).fadeIn();
+                } else {
+                  $(this).hide();
+                }
+              });
+            }
+          });
+
+          // Initialize search functionality
+          $("#upcomingSearchBtn").click(function() {
+            const searchTerm = $("#upcomingSearchInput").val().toLowerCase();
+
+            if (searchTerm.trim() === "") {
+              $(".book-card").show();
+              return;
+            }
+
+            $(".book-card").each(function() {
+              const title = $(this).find(".card-title").text().toLowerCase();
+              const author = $(this).find(".card-text").first().text().toLowerCase();
+              const description = $(this).find(".card-text").last().text().toLowerCase();
+
+              if (title.includes(searchTerm) || author.includes(searchTerm) || description.includes(searchTerm)) {
+                $(this).show();
+              } else {
+                $(this).hide();
+              }
+            });
+          });
+        } else {
+          console.error("No upcoming books found in data");
+          $("#upcomingBooks").html('<div class="col-12"><div class="alert alert-warning">No upcoming books available at this time.</div></div>');
+        }
+      },
+      error: function(xhr, status, error) {
+        console.error("Error loading upcoming books:", error);
+        console.error("Status:", status);
+        console.error("Response:", xhr.responseText);
+        $("#upcomingBooks").html('<div class="col-12"><div class="alert alert-danger">Failed to load upcoming books. Please try again later.</div></div>');
+      }
+    });
+  }
+
+  // Check if upcoming books are loaded after a short delay
+  setTimeout(function() {
+    if ($("#upcomingBooks .spinner-border").length) {
+      loadUpcomingBooksDirectly();
+    }
+  }, 1000);
+
+  // Initialize notification modal button
+  $("#notifyMeBtn").click(function() {
+    const modal = new bootstrap.Modal(document.getElementById("notificationModal"));
+    modal.show();
+  });
+});
+</script>
+</body>
+</html>
+

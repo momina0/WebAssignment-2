@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Manager - My Profile</title>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Book Manager</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reviews.html">Reviews</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="upcoming.html">Upcoming Books</a>
+                        </li>
+                        <li class="nav-item user-nav-item" style="display: none;">
+                            <a class="nav-link active" href="profile.html">My Books</a>
+                        </li>
+                        <li class="nav-item logged-out">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                        </li>
+                        <li class="nav-item logged-out">
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a>
+                        </li>
+                        <li class="nav-item logged-in" style="display: none;">
+                            <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                        </li>
+                        <li class="nav-item logged-in" style="display: none;">
+                            <a class="nav-link" href="profile.html" id="profileBtn">
+                                <i class="bi bi-person-circle"></i> <span id="userDisplayName">Profile</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Profile Header Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <div class="avatar-circle mx-auto mb-3">
+                            <span class="initials" id="profileInitials">JD</span>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <h2 id="profileHeaderName">Momina</h2>
+                        <p class="text-muted" id="profileHeaderBio">Avid reader and book collector</p>
+                        <p><strong>Member since:</strong> <span id="profileHeaderMemberSince">January 2023</span></p>
+                        <button class="btn btn-primary" id="editProfileBtn">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Books Section -->
+        <section id="my-books" class="py-5 fade-in">
+            <div class="container">
+                <h2 class="text-center mb-5">My Books</h2>
+                
+                <ul class="nav nav-tabs mb-4" id="myBooksTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="reading-tab" data-bs-toggle="tab" data-bs-target="#reading" type="button" role="tab" aria-controls="reading" aria-selected="true">Currently Reading</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="read-tab" data-bs-toggle="tab" data-bs-target="#read" type="button" role="tab" aria-controls="read" aria-selected="false">Read</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="want-to-read-tab" data-bs-toggle="tab" data-bs-target="#want-to-read" type="button" role="tab" aria-controls="want-to-read" aria-selected="false">Want to Read</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="my-reviews-tab" data-bs-toggle="tab" data-bs-target="#my-reviews" type="button" role="tab" aria-controls="my-reviews" aria-selected="false">My Reviews</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="myBooksTabContent">
+                    <div class="tab-pane fade show active" id="reading" role="tabpanel" aria-labelledby="reading-tab">
+                        <div id="currentlyReadingBooks" class="row">
+                            <div class="col-12 text-center py-5">
+                                <p class="text-muted">You haven't added any books to your "Currently Reading" list yet.</p>
+                                <a href="index.html#featured" class="btn btn-primary mt-3">Browse Books to Add</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="read" role="tabpanel" aria-labelledby="read-tab">
+                        <div id="readBooks" class="row">
+                            <div class="col-12 text-center py-5">
+                                <p class="text-muted">You haven't added any books to your "Read" list yet.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="want-to-read" role="tabpanel" aria-labelledby="want-to-read-tab">
+                        <div id="wantToReadBooks" class="row">
+                            <div class="col-12 text-center py-5">
+                                <p class="text-muted">You haven't added any books to your "Want to Read" list yet.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="my-reviews" role="tabpanel" aria-labelledby="my-reviews-tab">
+                        <div class="row mb-4">
+                            <div class="col-12 text-end">
+                                <button class="btn btn-primary" id="writeNewReviewBtn">Write New Review</button>
+                            </div>
+                        </div>
+                        <div id="userReviews" class="row">
+                            <div class="col-12 text-center py-5">
+                                <p class="text-muted">You haven't written any reviews yet.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reading Stats Section -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Reading Stats</h2>
+                <div class="row">
+                    <div class="col-md-4 text-center mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h3 class="display-4 text-primary" id="statsRead">0</h3>
+                                <p class="lead">Books Read</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h3 class="display-4 text-primary" id="statsReading">0</h3>
+                                <p class="lead">Currently Reading</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h3 class="display-4 text-primary" id="statsReviews">0</h3>
+                                <p class="lead">Reviews Written</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 Book Manager. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-light me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <div id="loginError" class="text-danger mt-2" style="display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModalLabel">Sign Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <label for="signupName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="signupName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="signupEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signupPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signupPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <div id="signupError" class="text-danger mt-2" style="display: none;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="profileForm">
+                        <div class="mb-3">
+                            <label for="profileName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="profileName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="profileEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="profileEmail" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="profileBio" class="form-label">Bio</label>
+                            <textarea class="form-control" id="profileBio" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="profileFavoriteGenre" class="form-label">Favorite Genre</label>
+                            <select class="form-select" id="profileFavoriteGenre">
+                                <option value="">Select a genre</option>
+                                <option value="Fiction">Fiction</option>
+                                <option value="Science Fiction">Science Fiction</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Non-Fiction">Non-Fiction</option>
+                                <option value="Biography">Biography</option>
+                                <option value="History">History</option>
+                                <option value="Fantasy">Fantasy</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-sm btn-outline-danger" id="deleteAccountBtn">Delete Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Review Modal -->
+    <div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addReviewModalLabel">Add Your Review</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reviewForm">
+                        <input type="hidden" id="reviewBookId" value="">
+                        <div class="mb-3">
+                            <label for="reviewBookTitle" class="form-label">Book Title</label>
+                            <input type="text" class="form-control" id="reviewBookTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reviewBookAuthor" class="form-label">Author</label>
+                            <input type="text" class="form-control" id="reviewBookAuthor" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reviewText" class="form-label">Your Review</label>
+                            <textarea class="form-control" id="reviewText" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Rating</label>
+                            <div class="rating-stars">
+                                <i class="bi bi-star rating-star" data-rating="1"></i>
+                                <i class="bi bi-star rating-star" data-rating="2"></i>
+                                <i class="bi bi-star rating-star" data-rating="3"></i>
+                                <i class="bi bi-star rating-star" data-rating="4"></i>
+                                <i class="bi bi-star rating-star" data-rating="5"></i>
+                                <input type="hidden" id="reviewRating" value="0" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Box -->
+    <div id="chatBox" class="chat-box">
+        <div class="chat-header">
+            <h6>Chat with us</h6>
+            <button id="closeChatBox" class="btn-close"></button>
+        </div>
+        <div id="chatMessages" class="chat-messages"></div>
+        <form id="chatForm">
+            <input type="text" id="chatInput" placeholder="Type your message..." required>
+            <button type="submit" class="btn btn-primary btn-sm">Send</button>
+        </form>
+    </div>
+
+    <button id="openChatBox" class="btn chat-button">
+        <i class="bi bi-chat-dots-fill text-white"></i>
+    </button>
+
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,201 @@
+{
+  "featured": [
+    {
+      "id": 1,
+      "title": "The Silent Echo",
+      "author": "Elena Martinez",
+      "description": "A gripping tale of mystery and suspense set in a small coastal town where secrets run deep. When a series of unexplained events begin to occur, local journalist Maya Collins must uncover the truth before it's too late.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 19.99,
+      "rating": 4.5,
+      "category": "Fiction"
+    },
+    {
+      "id": 2,
+      "title": "Quantum Horizons",
+      "author": "Dr. Nathan Chen",
+      "description": "An exploration of the cutting-edge science behind quantum physics and its potential to revolutionize our understanding of the universe. Dr. Chen breaks down complex concepts into accessible explanations.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 24.99,
+      "rating": 4.8,
+      "category": "Science Fiction"
+    },
+    {
+      "id": 3,
+      "title": "Midnight Gardens",
+      "author": "Sophia Williams",
+      "description": "A haunting gothic novel about a young woman who inherits an old mansion with a mysterious garden that only blooms at midnight. As she uncovers the property's dark history, she finds herself drawn into its supernatural secrets.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 18.5,
+      "rating": 4.2,
+      "category": "Fiction"
+    },
+    {
+      "id": 4,
+      "title": "The Algorithm's Edge",
+      "author": "Marcus Johnson",
+      "description": "A thought-provoking look at how algorithms are reshaping society, from social media to healthcare. Johnson examines both the benefits and potential dangers of our increasingly AI-driven world.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 22.99,
+      "rating": 4.6,
+      "category": "Non-Fiction"
+    },
+    {
+      "id": 5,
+      "title": "Stellar Odyssey",
+      "author": "Aria Blackwood",
+      "description": "The first book in an epic space opera series following the adventures of Captain Elara Voss and her diverse crew as they navigate political intrigue, alien encounters, and the mysteries of deep space.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 20.99,
+      "rating": 4.7,
+      "category": "Science Fiction"
+    },
+    {
+      "id": 6,
+      "title": "The Forgotten Path",
+      "author": "Thomas Reynolds",
+      "description": "A heartwarming story about a man who returns to his childhood hometown after thirty years and rediscovers himself through reconnecting with old friends and confronting past regrets.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 17.99,
+      "rating": 4.3,
+      "category": "Fiction"
+    }
+  ],
+  "newReleases": [
+    {
+      "id": 7,
+      "title": "Whispers in the Mist",
+      "author": "Isabella Clarke",
+      "description": "A atmospheric thriller set in the foggy moors of Scotland, where a series of disappearances leads detective Fiona MacLeod into a web of local superstitions and very real dangers.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 21.99,
+      "rating": 4.4,
+      "category": "Fiction"
+    },
+    {
+      "id": 8,
+      "title": "Digital Renaissance",
+      "author": "Dr. Olivia Park",
+      "description": "An insightful analysis of how digital technology is transforming art, literature, and creative expression in the 21st century, featuring interviews with pioneering digital artists.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 23.5,
+      "rating": 4.5,
+      "category": "Non-Fiction"
+    },
+    {
+      "id": 9,
+      "title": "Culinary Journeys",
+      "author": "Chef Miguel Rodriguez",
+      "description": "Part cookbook, part travelogue, this beautiful volume takes readers on a global culinary adventure, exploring traditional recipes and the cultural stories behind them.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 29.99,
+      "rating": 4.9,
+      "category": "Non-Fiction"
+    }
+  ],
+  "upcoming": [
+    {
+      "id": 10,
+      "title": "The Quantum Deception",
+      "author": "Dr. Nathan Chen",
+      "description": "The highly anticipated sequel to Quantum Horizons, exploring the ethical implications of quantum computing and the race between nations to achieve quantum supremacy.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 26.99,
+      "category": "Science Fiction",
+      "releaseDate": "2025-06-15"
+    },
+    {
+      "id": 11,
+      "title": "Echoes of Eternity",
+      "author": "Elena Martinez",
+      "description": "The thrilling conclusion to the Echo trilogy, where Maya Collins finally uncovers the full extent of the conspiracy that has plagued her coastal hometown for generations.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 19.99,
+      "category": "Fiction",
+      "releaseDate": "2025-04-22"
+    },
+    {
+      "id": 12,
+      "title": "Beyond the Algorithm",
+      "author": "Marcus Johnson",
+      "description": "A follow-up to The Algorithm's Edge, examining emerging technologies that may help humanity balance the benefits of AI with the need for human autonomy and creativity.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 24.99,
+      "category": "Non-Fiction",
+      "releaseDate": "2025-05-10"
+    },
+    {
+      "id": 13,
+      "title": "The Midnight Bloom",
+      "author": "Sophia Williams",
+      "description": "The sequel to Midnight Gardens reveals more secrets about the supernatural garden and its connection to an ancient family curse that spans centuries.",
+      "cover": "/placeholder.svg?height=400&width=300",
+      "price": 18.99,
+      "category": "Fiction",
+      "releaseDate": "2025-07-30"
+    }
+  ],
+  "reviews": [
+    {
+      "bookId": 1,
+      "bookTitle": "The Silent Echo",
+      "author": "Elena Martinez",
+      "reviewText": "This book kept me on the edge of my seat from beginning to end! The characters are so well-developed, and the mystery unfolds at a perfect pace. I couldn't put it down!",
+      "rating": 5,
+      "reviewer": "BookLover42",
+      "date": "2024-02-15T14:22:00Z",
+      "category": "Fiction"
+    },
+    {
+      "bookId": 2,
+      "bookTitle": "Quantum Horizons",
+      "author": "Dr. Nathan Chen",
+      "reviewText": "As someone with only a basic understanding of physics, I was worried this would be too technical. But Dr. Chen has a gift for making complex concepts accessible without oversimplifying. Fascinating read!",
+      "rating": 4.5,
+      "reviewer": "ScienceFan",
+      "date": "2024-01-20T09:15:00Z",
+      "category": "Science Fiction"
+    },
+    {
+      "bookId": 3,
+      "bookTitle": "Midnight Gardens",
+      "author": "Sophia Williams",
+      "reviewText": "The atmosphere in this novel is incredible - I could almost smell the midnight blooms! Williams creates a perfect blend of gothic horror and beautiful prose. The ending left me wanting more.",
+      "rating": 4,
+      "reviewer": "GothicReader",
+      "date": "2024-03-05T18:30:00Z",
+      "category": "Fiction"
+    },
+    {
+      "bookId": 4,
+      "bookTitle": "The Algorithm's Edge",
+      "author": "Marcus Johnson",
+      "reviewText": "An eye-opening look at how algorithms are shaping our world. Johnson presents balanced perspectives and avoids both techno-utopianism and fear-mongering. Essential reading for anyone interested in our digital future.",
+      "rating": 5,
+      "reviewer": "TechEthicist",
+      "date": "2024-02-28T11:45:00Z",
+      "category": "Non-Fiction"
+    },
+    {
+      "bookId": 5,
+      "bookTitle": "Stellar Odyssey",
+      "author": "Aria Blackwood",
+      "reviewText": "The worldbuilding in this space opera is phenomenal! Blackwood creates a universe that feels both vast and detailed. Captain Voss is now one of my favorite fictional characters. Can't wait for the next book!",
+      "rating": 4.5,
+      "reviewer": "SpaceExplorer",
+      "date": "2024-03-10T16:20:00Z",
+      "category": "Science Fiction"
+    },
+    {
+      "bookId": 6,
+      "bookTitle": "The Forgotten Path",
+      "author": "Thomas Reynolds",
+      "reviewText": "This book touched my heart in ways I wasn't expecting. Reynolds captures the bittersweet feeling of returning home and facing your past with such authenticity. I found myself reflecting on my own life choices.",
+      "rating": 4,
+      "reviewer": "NostalgicReader",
+      "date": "2024-01-05T13:10:00Z",
+      "category": "Fiction"
+    }
+  ]
+}
+
